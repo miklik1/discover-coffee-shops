@@ -1,7 +1,12 @@
 import Head from "next/head";
+import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import coffeeIcon from "../public/static/day79-coffee.svg";
 import Banner from "@/components/banner";
+import Card from "@/components/card";
+
+import coffeeStores from "../data/coffee-stores.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +21,22 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <Banner buttonText="View stores nearby" />
+        <div className={styles.heroImage}>
+          <Image src={coffeeIcon} alt="hero" width={500} height={500} />
+        </div>
+        <div className={styles.cardLayout}>
+          {coffeeStores.map((store) => {
+            return (
+              <Card
+                key={store.id}
+                name={store.name}
+                imgUrl={store.imgUrl}
+                href={`/coffee-store/${store.id}`}
+                className={styles.card}
+              />
+            );
+          })}
+        </div>
       </main>
     </>
   );
