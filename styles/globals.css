@@ -4,6 +4,14 @@
   font-weight: 500;
   src: url(/fonts/YsabeauSC-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Ysabeau SC';
+  font-style: normal;
+  font-weight: 300;
+  src: url(/fonts/YsabeauSC-Light.ttf) format('truetype');
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -88,7 +96,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   min-height: 100vh;
-  font-family: Ysabeau SC !important;
+  font-family: Ysabeau SC;
 }
 
 body {
@@ -125,7 +133,7 @@ pre {
 button {
   background-color: transparent;
   background-image: none;
-  font-weight: 600;
+  font-family: Ysabeau SC;
 }
 
 button:focus {

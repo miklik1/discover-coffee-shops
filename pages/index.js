@@ -1,16 +1,19 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import coffeeIcon from "../public/static/day79-coffee.svg";
 import Banner from "@/components/banner";
 import Card from "@/components/card";
 
-import coffeeStores from "../data/coffee-stores.json";
+import coffeeStoresData from "../data/coffee-stores.json";
 
-const inter = Inter({ subsets: ["latin"] });
+export async function getStaticProps(context) {
+  return {
+    props: { coffeeStores: coffeeStoresData },
+  };
+}
 
-export default function Home() {
+export default function Home({ coffeeStores }) {
   return (
     <>
       <Head>
@@ -19,24 +22,29 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
+      <main className={styles.main}>
         <Banner buttonText="View stores nearby" />
         <div className={styles.heroImage}>
           <Image src={coffeeIcon} alt="hero" width={500} height={500} />
         </div>
-        <div className={styles.cardLayout}>
-          {coffeeStores.map((store) => {
-            return (
-              <Card
-                key={store.id}
-                name={store.name}
-                imgUrl={store.imgUrl}
-                href={`/coffee-store/${store.id}`}
-                className={styles.card}
-              />
-            );
-          })}
-        </div>
+        {coffeeStores.length > 0 && (
+          <>
+            <h2 className={styles.heading2}>Toronto stores</h2>
+            <div className={styles.cardLayout}>
+              {coffeeStores.map((store) => {
+                return (
+                  <Card
+                    key={store.id}
+                    name={store.name}
+                    imgUrl={store.imgUrl}
+                    href={`/coffee-store/${store.id}`}
+                    className={styles.card}
+                  />
+                );
+              })}
+            </div>
+          </>
+        )}
       </main>
     </>
   );
