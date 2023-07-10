@@ -52,7 +52,7 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
@@ -83,7 +83,7 @@
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -134,6 +134,7 @@ button {
   background-color: transparent;
   background-image: none;
   font-family: Ysabeau SC;
+  color: black;
 }
 
 button:focus {
