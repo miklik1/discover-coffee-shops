@@ -1,21 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import cls from 'classnames';
+import cls from "classnames";
 
 import styles from "./card.module.css";
 
-const Card = (props) => {
+const Card = ({ href, name, imgUrl }) => {
   return (
-    <Link href={props.href} className={styles.cardLink}>
+    <Link href={href} className={styles.cardLink}>
       <div className={cls("glass", styles.container)}>
         <div className={styles.cardHeaderWrapper}>
-          <h2 className={styles.cardHeader}>{props.name}</h2>
+          <h2 className={styles.cardHeader}>{name}</h2>
         </div>
         <div className={styles.cardImageWrapper}>
           <Image
             className={styles.cardImage}
-            src={props.imgUrl}
+            src={imgUrl}
             width={260}
             height={160}
             alt="coffee store image"
